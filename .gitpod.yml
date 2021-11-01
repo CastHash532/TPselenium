@@ -1,0 +1,21 @@
+# Commands to start on workspace startup
+tasks:
+  - name: Docker setup
+    init: sudo docker-compose up
+
+  - name: Dependencies setup
+    init: mvn dependency:resolve 
+
+
+# Ports to expose on workspace startup
+ports:
+  - port: 7900
+    onOpen: open-preview
+  - port: 7901
+    onOpen: open-browser
+  - port: 7902
+    onOpen: open-browser
+
+vscode:
+  extensions:
+    - vscjava.vscode-java-pack 
