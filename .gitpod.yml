@@ -1,7 +1,8 @@
 # Commands to start on workspace startup
 tasks:
   - name: Docker setup
-    init: sudo docker-compose up
+    before: docker-compose pull
+    init: docker-compose up
 
   - name: Dependencies setup
     init: mvn dependency:resolve 
@@ -11,10 +12,9 @@ tasks:
 ports:
   - port: 7900
     onOpen: open-preview
-  - port: 7901
-    onOpen: open-browser
-  - port: 7902
-    onOpen: open-browser
+  - port: 4000-40000
+    onOpen: ignore
+
 
 vscode:
   extensions:
